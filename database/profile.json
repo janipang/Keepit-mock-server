@@ -1,0 +1,35 @@
+[
+    {
+      "id": "pf00000001",
+      "firstName": "Janista",
+      "lastName": "Kumwan",
+      "picture": "/user_bifern.jpg",
+      "phone": "0895179580",
+      "role": "clerk"
+    },
+    {
+      "id": "pf00000010",
+      "firstName": "Sai",
+      "lastName": "Prapamonton",
+      "picture": "/user_bifern.jpg",
+      "phone": "0890123456",
+      "role": "clerk"
+    },
+    {
+      "id": "pf00000011",
+      "firstName": "Thanapat",
+      "lastName": "What",
+      "picture": "/user_bifern.jpg",
+      "phone": "0987654321",
+      "role": "ceo"
+    },
+    {
+      "id": "pf00000100",
+      "firstName": "Pinyo",
+      "lastName": "Terchantuk",
+      "picture": "/user_bifern.jpg",
+      "phone": "0678912345",
+      "role": "clerk"
+    }
+  ]
+  
