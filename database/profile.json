@@ -38,5 +38,13 @@
     "picture": "/user_bifern.jpg",
     "phone": "0930930934",
     "role": "admin"
+  },
+  {
+    "id": "pf00000102",
+    "firstName": "",
+    "lastName": "",
+    "picture": "",
+    "phone": "",
+    "role": ""
   }
 ]

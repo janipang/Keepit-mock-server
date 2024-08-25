@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require('cors');
 const fs = require("fs");
 const bodyParser = require('body-parser');
 
@@ -23,6 +24,7 @@ function userIdGenerator(users){
 }
 
 const app = express();
+app.use(cors());
 app.use(bodyParser.json());
 
 app.get("/user", function (req, res) {
@@ -97,13 +99,9 @@ app.post("/user", (req, res) => {
   return res.status(201).send({ message: "User created successfully", user: newUser });
 })
 
-app.put("/profile/:userId", (req, res) => {
+app.put("/profile/:profileId", (req, res) => {
   const { firstName, lastName, picture, phone, role } = req.body;
-  const userId = req.params.userId;
-  const users = readFile("user");
-  const user = users.find(user => user.id === userId);
-  if (!user) return res.status(404).send({ error: "User not found" });
-  const profileId = user.profileId
+  const profileId = req.params.profileId
   const profiles = readFile("profile");
   let profile = profiles.find(profile => profile.id === profileId);
   if (profile) {
