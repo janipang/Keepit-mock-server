@@ -26,7 +26,18 @@ const app = express();
 app.use(bodyParser.json());
 
 app.get("/user", function (req, res) {
+  const { username } = req.query;
   const users = readFile("user");
+  if (username) {
+    
+    const user = users.find(user => (user.username === username));
+    
+    if (user) {
+      return res.send(user);
+    } else {
+      return res.status(404).send({ error: "User not found" });
+    }
+  }
   res.send(users);
 });
 
@@ -35,10 +46,10 @@ app.get("/profile", function (req, res) {
   res.send(profiles);
 });
 
-app.get("/user/:id:username", (req, res) => {
-  const { id, username } = req.params;
+app.get("/user/:id", (req, res) => {
+  const { id } = req.params;
   const users = readFile("user");
-  const user = users.find(user => user.username === username || user.id === id);
+  const user = users.find(user => user.id === id);
   if (user) {
     return res.send(user);
   } else {
