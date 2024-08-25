@@ -46,7 +46,7 @@ app.get("/user/:id:username", (req, res) => {
   }
 });
 
-app.get("/profile:id", function (req, res) {
+app.get("/profile/:id", function (req, res) {
   const { id } = req.query;
   const profiles = readFile("profile");
   const profile = profiles.find(profile => profile.id === id);
@@ -84,6 +84,25 @@ app.post("/user", (req, res) => {
   writeFile("profile", profiles)
 
   return res.status(201).send({ message: "User created successfully", user: newUser });
+})
+
+app.put("/profile/:userId", (req, res) => {
+  const { firstName, lastName, picture, phone, role } = req.body;
+  const userId = req.params.userId;
+  const users = readFile("user");
+  const user = users.find(user => user.id === userId);
+  if (!user) return res.status(404).send({ error: "User not found" });
+  const profileId = user.profileId
+  const profiles = readFile("profile");
+  let profile = profiles.find(profile => profile.id === profileId);
+  if (profile) {
+    profile = { ...profile, firstName, lastName, picture, phone, role };
+    const updated_profiles = profiles.map(p => p.id === profileId ? profile : p);
+    writeFile("profile", updated_profiles)
+    return res.send(profile);
+  } else {
+    return res.status(404).send({ error: "Profile not found" });
+  }
 })
 
 app.listen(8000);
