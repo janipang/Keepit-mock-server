@@ -22,5 +22,11 @@
     "username": "pinyo",
     "password": "pinyo-01",
     "profileId": "pf00000100"
+  },
+  {
+    "id": "00000101",
+    "username": "ditdit",
+    "password": "ditdit-01",
+    "profileId": "pf00000101"
   }
 ]

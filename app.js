@@ -3,12 +3,12 @@ const fs = require("fs");
 const bodyParser = require('body-parser');
 
 function writeFile(file, data){
-  file_path = `./database/${file}.json`
-  fs.writeFile(file, JSON.stringify(data, null, 2));
+  const file_path = `./database/${file}.json`;
+  fs.writeFileSync(file_path, JSON.stringify(data, null, 2));
 }
 
 function readFile(file){
-  file_path = `./database/${file}.json`
+  const file_path = `./database/${file}.json`;
   const data = fs.readFileSync(file_path, 'utf8');
   return JSON.parse(data);
 }
