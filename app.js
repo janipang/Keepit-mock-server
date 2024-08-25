@@ -57,8 +57,8 @@ app.get("/user/:id", (req, res) => {
   }
 });
 
-app.get("/profile/:id", function (req, res) {
-  const { id } = req.query;
+app.get("/profile/:id", (req, res) => {
+  const { id } = req.params;
   const profiles = readFile("profile");
   const profile = profiles.find(profile => profile.id === id);
   if (profile) {
