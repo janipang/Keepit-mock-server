@@ -105,6 +105,27 @@ app.post("/user", (req, res) => {
   return res.status(201).send( newUser );
 })
 
+app.post("/enterprise", (req,res) => {
+  const enterprise = req.body;
+  const enterprises = readFile("enterprise");
+  const documents = readFile("document");
+  const id = idGenerator(enterprises, "en");
+  const docsAchiveId = idGenerator(documents, "dc");
+
+  // create enterprise
+  const newEnterprise = { id, ...enterprise, documentArchiveId: docsAchiveId, AdminId : []};
+  console.log(newEnterprise);
+  enterprises.push(newEnterprise)
+  writeFile("enterprise", enterprises)
+
+  // create documentArchive
+  const newDocsArchive = {id: docsAchiveId, income: [], expense: []}
+  documents.push(newDocsArchive)
+  writeFile("document", documents)
+  
+  return res.status(201).send( newEnterprise );
+})
+
 app.put("/profile/:profileId", (req, res) => {
   const { firstName, lastName, picture, phone, role } = req.body;
   console.log( firstName, lastName, picture, phone, role )
@@ -113,7 +134,6 @@ app.put("/profile/:profileId", (req, res) => {
   let profile = profiles.find(profile => profile.id === profileId);
   if (profile) {
     profile = { ...profile, firstName, lastName, picture, phone, role };
-    console.log(profile);
     const updated_profiles = profiles.map(p => p.id === profileId ? profile : p);
     writeFile("profile", updated_profiles)
     return res.send(profile);
@@ -122,7 +142,4 @@ app.put("/profile/:profileId", (req, res) => {
   }
 })
 
-app.post("/enterprise", (req,res) => {
-  const { firstName, lastName, picture, phone, role } = req.body;
-})
 app.listen(8000);

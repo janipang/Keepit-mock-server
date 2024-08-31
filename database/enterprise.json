@@ -7,7 +7,10 @@
     "ownerId": "us00000001",
     "createdTime": "2024-08-31T12:13:10Z",
     "documentArchiveId": "dc00000001",
-    "AdminId": ["us00000002", "us00000003"]
+    "AdminId": [
+      "us00000002",
+      "us00000003"
+    ]
   },
   {
     "id": "en00000002",
@@ -17,6 +20,9 @@
     "ownerId": "us00000004",
     "createdTime": "2024-08-31T12:13:10Z",
     "documentArchiveId": "dc00000002",
-    "AdminId": ["us00000005", "us00000006"]
+    "AdminId": [
+      "us00000005",
+      "us00000006"
+    ]
   }
 ]
