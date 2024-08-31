@@ -96,7 +96,7 @@ app.post("/user", (req, res) => {
   profiles.push(newProfile);
   writeFile("profile", profiles)
 
-  return res.status(201).send({ message: "User created successfully", user: newUser });
+  return res.status(201).send( newUser );
 })
 
 app.put("/profile/:profileId", (req, res) => {
@@ -113,5 +113,7 @@ app.put("/profile/:profileId", (req, res) => {
     return res.status(404).send({ error: "Profile not found" });
   }
 })
+
+
 
 app.listen(8000);
