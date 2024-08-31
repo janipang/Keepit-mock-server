@@ -14,13 +14,19 @@ function readFile(file){
   return JSON.parse(data);
 }
 
-function userIdGenerator(users){
-  const maxId = users.reduce((max, user) => {
-    const currentId = parseInt(user.id, 10);
-    return currentId > max ? currentId : max;
-  }, 0);
-  const newId = (maxId + 1).toString().padStart(8, '0');
-  return newId;
+function idGenerator(data, prefix){
+  let maxNumber = 0;
+  data.forEach(item => {
+    if (item.id.startsWith(prefix)) {
+      const numberPart = parseInt(item.id.slice(prefix.length), 10);
+      if (numberPart > maxNumber) {
+        maxNumber = numberPart;
+      }
+    }
+  });
+  const newNumber = (maxNumber + 1).toString().padStart(8, '0');
+  return `${prefix}${newNumber}`;
+
 }
 
 const app = express();
@@ -80,8 +86,8 @@ app.post("/user", (req, res) => {
   }
   // create user
   const users = readFile("user");
-  const id = userIdGenerator(users);
-  const profileId = `pf${id}`
+  const id = idGenerator(users, "us");
+  const profileId = id.replace("us", "pf");
   const user_exist = users.find(user => user.username === username);
   if (user_exist) {
     return res.status(409).send({ error: "Username already exists" });
@@ -101,11 +107,13 @@ app.post("/user", (req, res) => {
 
 app.put("/profile/:profileId", (req, res) => {
   const { firstName, lastName, picture, phone, role } = req.body;
+  console.log( firstName, lastName, picture, phone, role )
   const profileId = req.params.profileId
   const profiles = readFile("profile");
   let profile = profiles.find(profile => profile.id === profileId);
   if (profile) {
     profile = { ...profile, firstName, lastName, picture, phone, role };
+    console.log(profile);
     const updated_profiles = profiles.map(p => p.id === profileId ? profile : p);
     writeFile("profile", updated_profiles)
     return res.send(profile);

@@ -35,6 +35,11 @@
     "role": "admin"
   },
   {
-    "id": "pf00000006"
+    "id": "pf00000006",
+    "firstName": "Nantipat",
+    "lastName": "Mangsiri",
+    "picture": "tan.png",
+    "phone": "0909909987",
+    "role": "admin"
   }
 ]
