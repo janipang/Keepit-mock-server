@@ -33,6 +33,9 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+
+// ----------------------- get --------------------------- 
+
 app.get("/user", function (req, res) {
   const { username } = req.query;
   const users = readFile("user");
@@ -54,6 +57,11 @@ app.get("/profile", function (req, res) {
   res.send(profiles);
 });
 
+app.get("/enterprise", function (req, res) {
+  const enterprises = readFile("enterprise");
+  res.send(enterprises);
+});
+
 app.get("/user/:id", (req, res) => {
   const { id } = req.params;
   const users = readFile("user");
@@ -73,6 +81,17 @@ app.get("/profile/:id", (req, res) => {
     return res.send(profile);
   } else {
     return res.status(404).send({ error: "Profile not found" });
+  }
+});
+
+app.get("/enterprise/:id", (req, res) => {
+  const { id } = req.params;
+  const enterprises = readFile("enterprise");
+  const enterprise = enterprises.find(enterprise => enterprise.id === id);
+  if (enterprise) {
+    return res.send(enterprise);
+  } else {
+    return res.status(404).send({ error: "Enterprise not found" });
   }
 });
 
@@ -125,6 +144,8 @@ app.post("/enterprise", (req,res) => {
   
   return res.status(201).send( newEnterprise );
 })
+
+// ----------------------- pีt --------------------------- 
 
 app.put("/profile/:profileId", (req, res) => {
   const { firstName, lastName, picture, phone, role } = req.body;
