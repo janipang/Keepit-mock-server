@@ -1,14 +1,9 @@
 [
   {
-    "id": "pf00000001",
-    "firstName": "Janista",
-    "lastName": "Kumwan",
-    "picture": "/user_bifern.jpg",
-    "phone": "0895179580",
-    "role": "clerk"
+    "id": "pf00000001"
   },
   {
-    "id": "pf00000010",
+    "id": "pf00000002",
     "firstName": "Sai",
     "lastName": "Prapamonton",
     "picture": "/user_bifern.jpg",
@@ -16,27 +11,30 @@
     "role": "clerk"
   },
   {
-    "id": "pf00000011",
+    "id": "pf00000003",
     "firstName": "Thanapat",
     "lastName": "What",
     "picture": "/user_bifern.jpg",
     "phone": "0987654321",
-    "role": "ceo"
+    "role": "clerk"
   },
   {
-    "id": "pf00000100",
+    "id": "pf00000004",
     "firstName": "Pinyo",
     "lastName": "Terchantuk",
     "picture": "/user_bifern.jpg",
     "phone": "0678912345",
-    "role": "clerk"
+    "role": "ceo"
   },
   {
-    "id": "pf00000101",
+    "id": "pf00000005",
     "firstName": "Kasidit",
     "lastName": "Samaad",
     "picture": "/user_bifern.jpg",
     "phone": "0930930934",
     "role": "admin"
+  },
+  {
+    "id": "pf00000006"
   }
 ]

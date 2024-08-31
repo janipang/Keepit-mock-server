@@ -1,0 +1,22 @@
+[
+  {
+    "id": "en00000001",
+    "registrationNumber": "x-xxxx-xxxxx-xx-x",
+    "taxId": "x-xxxx-xxxxx-xx-x",
+    "name": "KFC",
+    "ownerId": "us00000001",
+    "createdTime": "2024-08-31T12:13:10Z",
+    "documentArchiveId": "dc00000001",
+    "AdminId": ["us00000002", "us00000003"]
+  },
+  {
+    "id": "en00000002",
+    "registrationNumber": "x-xxxx-xxxxx-xx-x",
+    "taxId": "x-xxxx-xxxxx-xx-x",
+    "name": "MCDonald",
+    "ownerId": "us00000004",
+    "createdTime": "2024-08-31T12:13:10Z",
+    "documentArchiveId": "dc00000002",
+    "AdminId": ["us00000005", "us00000006"]
+  }
+]

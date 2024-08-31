@@ -114,6 +114,7 @@ app.put("/profile/:profileId", (req, res) => {
   }
 })
 
-
-
+app.post("/enterprise", (req,res) => {
+  const { firstName, lastName, picture, phone, role } = req.body;
+})
 app.listen(8000);
